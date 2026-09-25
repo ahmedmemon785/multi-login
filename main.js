@@ -69,9 +69,14 @@ function findSession(sessionId) {
   return null;
 }
 
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' +
-           'AppleWebKit/537.36 (KHTML, like Gecko) ' +
-           'Chrome/120.0.0.0 Safari/537.36';
+// Derived from the Chromium build Electron actually ships, so the UA and
+// client hints never drift from reality (a stale hardcoded version is an
+// easy bot-detection tell for sites like Stripe).
+const CHROME_VERSION = process.versions.chrome;
+const CHROME_MAJOR   = CHROME_VERSION.split('.')[0];
+const UA = `Mozilla/5.0 (Windows NT 10.0; Win64; x64) ` +
+           `AppleWebKit/537.36 (KHTML, like Gecko) ` +
+           `Chrome/${CHROME_VERSION} Safari/537.36`;
 
 // Full-page navigation to these domains during an OAuth/SSO flow is left alone
 // instead of being redirected into a popup window.
@@ -226,7 +231,7 @@ function createView(site, session) {
   // Strip Electron-specific client-hint headers so sites like Stripe see real Chrome
   view.webContents.session.webRequest.onBeforeSendHeaders({ urls: ['<all_urls>'] }, (details, callback) => {
     const h = details.requestHeaders;
-    h['sec-ch-ua']          = '"Chromium";v="120", "Google Chrome";v="120", "Not-A.Brand";v="99"';
+    h['sec-ch-ua']          = `"Chromium";v="${CHROME_MAJOR}", "Google Chrome";v="${CHROME_MAJOR}", "Not-A.Brand";v="99"`;
     h['sec-ch-ua-mobile']   = '?0';
     h['sec-ch-ua-platform'] = '"Windows"';
     delete h['sec-ch-ua-full-version-list'];
