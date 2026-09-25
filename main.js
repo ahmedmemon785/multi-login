@@ -354,8 +354,6 @@ function createView(site, session) {
       }));
     });
     menu.append(new MenuItem({ label: 'Translate Page', submenu: translatePageSub }));
-    menu.append(new MenuItem({ type: 'separator' }));
-    menu.append(new MenuItem({ label: 'Inspect Element', click: () => view.webContents.inspectElement(params.x, params.y) }));
 
     menu.popup({ window: mainWindow });
   });
