@@ -5,8 +5,7 @@
 **Run isolated sessions of any web app side by side.**
 WhatsApp, Stripe, Discord, hosting panels — each with its own cookies and login, in one window.
 
-<!-- Replace with a real screenshot/GIF before publishing: docs/images/demo.gif -->
-<!-- ![Multi Login demo](docs/images/demo.gif) -->
+![Multi Login demo](docs/images/demo.gif)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078D6.svg)](#)
