@@ -92,6 +92,6 @@ Issues and PRs are welcome — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 Built by **[Ahmed Memon](https://www.digisysalpha.com/)** — senior backend developer, available for freelance work.
 
-[Website](https://www.digisysalpha.com/) · [GitHub](https://github.com/ahmedmemon785/) · [LinkedIn](https://www.linkedin.com/in/mohammad-ahmed-033aa198/) · [Email](mailto:ahmedmemon785@gmail.com)
+[Website](https://www.digisysalpha.com/) · [GitHub](https://github.com/ahmedmemon785/) · [LinkedIn](https://www.linkedin.com/in/mohammad-ahmed-033aa198/) · [Email](mailto:ahmedmemon785@gmail.com) . [Fiverr](http://fiverr.com/users/ahmedmemon785/) . [Upwork](https://www.upwork.com/freelancers/ahmedashrafmemon) 
 
 </div>
