@@ -399,6 +399,67 @@ function switchSession(siteId, sessionId) {
   return sessionId;
 }
 
+// ── App menu ─────────────────────────────────────────────────
+
+function buildAppMenu() {
+  const template = [
+    {
+      label: 'File',
+      submenu: [{ role: 'quit' }],
+    },
+    {
+      label: 'View',
+      submenu: [
+        { role: 'reload' },
+        { role: 'forceReload' },
+        { role: 'toggleDevTools' },
+        { type: 'separator' },
+        { role: 'resetZoom' },
+        { role: 'zoomIn' },
+        { role: 'zoomOut' },
+        { type: 'separator' },
+        { role: 'togglefullscreen' },
+      ],
+    },
+    {
+      label: 'Help',
+      submenu: [
+        {
+          label: `About ${APP_NAME}`,
+          click: () => {
+            dialog.showMessageBox(mainWindow, {
+              type: 'info',
+              title: `About ${APP_NAME}`,
+              message: APP_NAME,
+              detail:
+                `Run isolated sessions of any web app side by side — WhatsApp, Stripe, ` +
+                `Discord, hosting panels — each with its own cookies and login.\n\n` +
+                `Version ${app.getVersion()}\n\n` +
+                `Built by Ahmed Memon — senior backend developer, available for freelance work.\n` +
+                `  Website:  https://www.digisysalpha.com/\n` +
+                `  GitHub:   https://github.com/ahmedmemon785/\n` +
+                `  LinkedIn: https://www.linkedin.com/in/mohammad-ahmed-033aa198/\n` +
+                `  Email:    ahmedmemon785@gmail.com`,
+              buttons: ['OK', 'Open GitHub'],
+            }).then(({ response }) => {
+              if (response === 1) shell.openExternal('https://github.com/ahmedmemon785/multi-login');
+            });
+          },
+        },
+        {
+          label: 'Report an Issue',
+          click: () => shell.openExternal('https://github.com/ahmedmemon785/multi-login/issues'),
+        },
+        {
+          label: 'Hire the Developer',
+          click: () => shell.openExternal('https://www.digisysalpha.com/'),
+        },
+      ],
+    },
+  ];
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+}
+
 // ── Window ───────────────────────────────────────────────────
 
 function createWindow() {
@@ -578,6 +639,6 @@ ipcMain.on('web-notification', (event, data) => {
 
 // ── Lifecycle ────────────────────────────────────────────────
 
-app.whenReady().then(() => { loadConfig(); createWindow(); });
+app.whenReady().then(() => { loadConfig(); buildAppMenu(); createWindow(); });
 app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });
 app.on('activate', () => { if (!mainWindow) createWindow(); });
