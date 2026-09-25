@@ -1,0 +1,36 @@
+{
+  "name": "multi-login",
+  "version": "1.0.0",
+  "description": "Run isolated sessions of any web app side by side — WhatsApp, Stripe, Discord, hosting panels — each with its own cookies and login.",
+  "main": "main.js",
+  "author": "Ahmed Memon <ahmedmemon785@gmail.com> (https://www.digisysalpha.com/)",
+  "license": "MIT",
+  "homepage": "https://github.com/ahmedmemon785/multi-login",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "com.digisysalpha.multilogin",
+    "productName": "Multi Login",
+    "files": [
+      "main.js",
+      "preload.js",
+      "view-preload.js",
+      "index.html",
+      "renderer.js",
+      "styles.css"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "icon.ico"
+    },
+    "portable": {
+      "artifactName": "Multi-Login.exe"
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-builder": "^24.13.3"
+  }
+}
